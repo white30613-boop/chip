@@ -152,7 +152,8 @@ function render(nm){
   $('verdict').innerHTML=`今天 主力群 <b class="num ${cls(t.g)}">${sg(t.g)}</b>${own(t.g,s.cum.g)}、外資 <b class="num ${cls(t.f)}">${sg(t.f)}</b>${own(t.f,s.cum.f)}、其他（多為散戶） <b class="num ${cls(t.o)}">${sg(t.o)}</b> 張；收盤${esc(s.where)}。`+(s.galert?' <span class="alert">拉抬型大戶集體出貨中</span>':'');
   const n=s.stage.n;
   $('steps').innerHTML=STEPS.map((x,i)=>`<div class="step${i+1===n?' on'+(n>=4?' late':''):''}"><b>${'①②③④⑤⑥'[i]}</b>${x}</div>`).join('');
-  $('stagetxt').innerHTML=`<b>${esc(s.stage.t)}</b>　<span class="mut">近 5 日：主力群 <span class="num ${cls(s.g5)}">${sg(s.g5)}</span>${own(s.g5,s.cum.g)}、外資 <span class="num ${cls(s.f5)}">${sg(s.f5)}</span>${own(s.f5,s.cum.f)} 張</span>`;
+  $('stagetxt').innerHTML=`<b>${esc(s.stage.t)}</b>　<span class="mut">近 5 日：主力群 <span class="num ${cls(s.g5)}">${sg(s.g5)}</span>${own(s.g5,s.cum.g)}、外資 <span class="num ${cls(s.f5)}">${sg(s.f5)}</span>${own(s.f5,s.cum.f)} 張</span>`
+    +`<br><span class="mut">今天單日：主力群 <span class="num ${cls(t.g)}">${sg(t.g)}</span>${own(t.g,s.cum.g)}、外資 <span class="num ${cls(t.f)}">${sg(t.f)}</span>${own(t.f,s.cum.f)}、其他（多為散戶） <span class="num ${cls(t.o)}">${sg(t.o)}</span> 張</span>`;
   // 今日消息：冒號前的標題加粗；數字依正負上色（紅漲綠跌）
   const hl=t=>esc(t).replace(/^([^：]{2,12}：)/,'<b>$1</b>').replace(/([+\-][\d,]+)(?= 張|（|，|、|；|$)/g,m=>`<span class="num ${m[0]==='+'?'pos':'neg'}">${m}</span>`);
   $('news').innerHTML=(s.news||[]).map(x=>`<li class="${x.k==='ev'?'ev':''}"><span>${hl(x.t)}</span></li>`).join('')||'<li><span class="mut">今天沒有資料</span></li>';
