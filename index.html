@@ -56,6 +56,11 @@ section{background:var(--card);border:1px solid var(--line);border-radius:10px;p
 .news li.ev::before{background:transparent;border:1.5px solid var(--muted);width:5px;height:5px}
 .news b{font-weight:600}
 .tmr{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+.howto{border-top:1px solid var(--line);padding-top:10px}
+.howto summary{cursor:pointer;font-weight:600;font-size:14px}
+.howto p{font-size:13px;color:var(--muted);margin:8px 0}
+.howto table{min-width:0}
+.howto th,.howto td{text-align:left;white-space:normal}
 .tmr h3{font-size:15px;margin:0 0 10px}
 .tmr h3 small{font-weight:400;font-size:13px;color:var(--muted)}
 .chk{display:grid;gap:8px;margin:0;padding:0;list-style:none}
@@ -121,7 +126,20 @@ footer{font-size:12px;color:var(--muted);display:grid;gap:6px;padding-inline:4px
   <section><h2>今日消息 <small id="newsd">每晚依當天分點資料自動整理；括號是佔該分點自己原本持股的比例</small></h2><ul class="news" id="news"></ul>
     <div class="tmr"><h3>下個交易日留意 <small>依今天資料自動整理：只說要看什麼、到哪裡算變化，不是買賣建議</small></h3><ul class="news" id="tmr"></ul></div></section>
   <section><h2>現在走到哪一步 <small>主力吃 → 外資跟 → 散戶上車 → 主力跑 → 外資跑 → 散戶互踩（最近 5 個交易日；外資＝官方三大法人數字）</small></h2><div class="steps" id="steps"></div><div id="stagetxt"></div></section>
-  <section><h2>要盯的幾件事 <small>燈號：綠＝正常、黃＝留意、紅＝警訊（數字仍是紅漲綠跌）</small></h2><ul class="chk" id="chk"></ul></section>
+  <section><h2>要盯的幾件事 <small>燈號：綠＝正常、黃＝留意、紅＝警訊（數字仍是紅漲綠跌）</small></h2><ul class="chk" id="chk"></ul>
+    <details class="howto"><summary>「集保大戶」怎麼看？</summary>
+      <p>集保每週公布一次：每週最後一個營業日，持有 1,000 張以上（千張以上）、400 張以上的人數，和他們合計佔總股數的比例。同一人在不同券商的帳戶會合併計算，不管在哪家券商買都算得到。看「人數」和「持股比例」一起怎麼變：</p>
+      <div class="tbl"><table><thead><tr><th>人數</th><th>持股比例</th><th>代表什麼</th></tr></thead><tbody>
+        <tr><td>↑ 變多</td><td>↑ 變高</td><td><b>有新的大戶在買</b>，籌碼往大戶集中</td></tr>
+        <tr><td>↓ 變少</td><td>↓ 變低</td><td><b>大戶在賣</b>，股票流到散戶手上</td></tr>
+        <tr><td>↓ 變少</td><td>↑ 變高</td><td><b>少數人在收貨</b>，股票集中到更少人手上</td></tr>
+        <tr><td>↑ 變多</td><td>↓ 變低</td><td>原本的大大戶減碼、分給幾個新的中型大戶，<b>籌碼在換手</b></td></tr>
+        <tr><td>差不多</td><td>差不多</td><td><b>大戶沒動</b></td></tr>
+      </tbody></table></div>
+      <p>例：千張以上人數變少、比例變低，但 400 張以上比例差不多 → 有幾位千張大戶減碼到千張以下，大戶整體沒有出貨。</p>
+      <p>燈號：400 張以上的比例比上週多 0.5 個百分點以上亮綠燈、少 0.5 以上亮紅燈，中間是黃燈。一週的變化容易有雜訊，連續幾週往同一方向才比較有意義。</p>
+      <p>注意：融資買的股票放在券商融資專戶，會被當成一個大戶；董監、公司派持股也算在內；一人用多個不同名字的帳戶會被算成好幾個小戶；辦現增後總股數變多，比例會被稀釋。</p>
+    </details></section>
   <section><h2>洗盤價位帶 <small>技術面參考，每晚依最新資料重算</small></h2><div class="ladder" id="ladder"></div></section>
   <section><h2>主力、外資、其他每週買賣 <small>單位：張；其他（多為散戶）＝主力群與外資以外的所有分點</small></h2>
     <div class="legend"><span><i style="background:var(--main)"></i>主力群</span><span><i style="background:var(--foreign)"></i>外資</span><span><i style="background:var(--retail)"></i>其他（多為散戶）</span><span><i style="background:var(--fg);height:2px;vertical-align:3px"></i>收盤價</span></div>
